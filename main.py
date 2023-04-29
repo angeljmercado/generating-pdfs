@@ -11,7 +11,8 @@ for index, row in csv.iterrows():
     pdf.set_font(family="Times", style="B", size=24)
     pdf.set_text_color(100, 100, 255)
     pdf.cell(w=0, h=12, txt=row["Topic"], align="L", ln=1)
-    pdf.line(10, 21, 200, 21)
+    for i in range (20, 300, 10):
+        pdf.line(10, i, 200, i)
 
     # Set the footers
     pdf.ln(265)
@@ -20,4 +21,10 @@ for index, row in csv.iterrows():
     pdf.cell(w=0, h=10, txt=row["Topic"], align="R")
     for i in range(int(row["Pages"] - 1)):
         pdf.add_page()
+        pdf.ln(280)
+        pdf.set_font(family="Times", style="I", size=8)
+        pdf.set_text_color(180, 180, 180)
+        pdf.cell(w=0, h=10, txt=row["Topic"], align="R")
+        for i in range (20, 300, 10):
+            pdf.line(10, i, 200, i)
 pdf.output("output.pdf")
